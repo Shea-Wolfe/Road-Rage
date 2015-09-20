@@ -7,7 +7,7 @@ import math
 
 class Car():
 
-    def __init__(self, location, current_speed=15, limit=33):
+    def __init__(self, location, current_speed=25, limit=33):
         self.max_s = limit #In meters per second truncating 33.333 to 33
         self.length = 5 #In meters
         self.cs = current_speed #current speed
@@ -18,15 +18,42 @@ class Car():
 
     def change_speed(self):
         choice = random.random()
-
-        if choice < .1:
-            self.cs -= 2
-        elif self.cs == self.max_s:
-            pass
+        if self.location >= 1000 and self.location < 2000:
+            if choice < .14:
+                self.cs -= 2
+            elif self.cs == self.max_s:
+                pass
+            else:
+                self.cs += 2
+                if self.cs > self.max_s:
+                    self.cs = self.max_s
+        elif self.location >= 3000 and self.location < 4000:
+            if choice < .2:
+                self.cs -= 2
+            elif self.cs == self.max_s:
+                pass
+            else:
+                self.cs += 2
+                if self.cs > self.max_s:
+                    self.cs = self.max_s
+        elif self.location >= 5000 and self.location < 6000:
+            if choice < .12:
+                self.cs -= 2
+            elif self.cs == self.max_s:
+                pass
+            else:
+                self.cs += 2
+                if self.cs > self.max_s:
+                    self.cs = self.max_s
         else:
-            self.cs += 2
-            if self.cs > self.max_s:
-                self.cs = self.max_s
+            if choice < .1:
+                self.cs -= 2
+            elif self.cs == self.max_s:
+                pass
+            else:
+                self.cs += 2
+                if self.cs > self.max_s:
+                    self.cs = self.max_s
 
 
     def drive(self):
@@ -37,7 +64,7 @@ class Road():
         pass
 
     def pop_road(self, limit):
-        self.cars = [Car(int((n*33.33)+4), limit) for n in range(30)]
+        self.cars = [Car(int((n*33.33)+4), limit=limit) for n in range(30)]
 
 
     def get_car_locations(self, car):

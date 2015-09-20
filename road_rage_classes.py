@@ -7,8 +7,8 @@ import math
 
 class Car():
 
-    def __init__(self, location, current_speed=25):
-        self.max_s = 33 #In meters per second truncating 33.333 to 33
+    def __init__(self, location, current_speed=15, limit=33):
+        self.max_s = limit #In meters per second truncating 33.333 to 33
         self.length = 5 #In meters
         self.cs = current_speed #current speed
         self.location = location
@@ -18,6 +18,7 @@ class Car():
 
     def change_speed(self):
         choice = random.random()
+
         if choice < .1:
             self.cs -= 2
         elif self.cs == self.max_s:
@@ -35,8 +36,8 @@ class Road():
     def __init__(self):
         pass
 
-    def pop_road(self):
-        self.cars = [Car(int((n*33.33)+4)) for n in range(30)]
+    def pop_road(self, limit):
+        self.cars = [Car(int((n*33.33)+4), limit) for n in range(30)]
 
 
     def get_car_locations(self, car):
@@ -59,9 +60,9 @@ class Road():
 
 class Simulation():
 
-    def __init__(self):
+    def __init__(self, limit):
         self.road = Road()
-        self.road.pop_road()
+        self.road.pop_road(limit)
         self.crash = 0
         self.car_speed = []
         self.car_locations = [1] * 1000

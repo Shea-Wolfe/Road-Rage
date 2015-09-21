@@ -8,6 +8,10 @@ road_rage_final.ipynb contains the final graphs and examples of data.  In order 
 
 requirements.txt is a file containing the downloads needed for these programs.  To install it in your environment type $ pip install requirements.txt
 
+hard_road_rage.py is a module built to hold the classes and imports needed to simulate traffic for the hard mode of the project.  In order to use it make sure it is in the same directory as the file you are in and type "from road_rage_classes import \*" at the top to import the data.
+
+hard_road_rage.ipynb contains the graphs and data for hard mode.  It pulls from hard_road_rage.py.  It is opened in ipython notebook as above.
+
 # Description
 
 The point of these files is to simulate a 1Km stretch of road with 30 cars on it given a set of givens.  We are attempting to learn the ideal speed limit for the road.  Conclusions drawn from the data are in road_rage_final.ipynb.
